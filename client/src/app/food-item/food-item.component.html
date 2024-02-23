@@ -1,7 +1,13 @@
-<p>Hello!</p>
-<p>food-item works! {{ id }} </p>
+<!-- <p>Hello!</p> -->
+<!-- <p>food-item works! {{ id }} </p> -->
 
-<p>
-{{ food?.foods }}
-</p>
-<img [src]="food?.image" alt="">
+<div class="flex justify-center items-center h-screen">
+    <img [src]="food?.image" alt="food-image" class="mr-5" height="400px" width="400px">
+
+    <div>
+        <p> {{ food?.foods }} </p>
+        <p> {{ food?.location }} </p>
+        <p> {{ food?.distributor }} </p>  
+    </div>
+      
+</div>
