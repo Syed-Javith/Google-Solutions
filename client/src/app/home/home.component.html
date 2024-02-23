@@ -1,0 +1,8 @@
+<p>home works!</p>
+
+
+<form #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <input type="text" name="email" ngModel #email="ngModel">
+  <input type="password" name="password" ngModel #password="ngModel">
+  <input type="submit" value="go">
+</form>
