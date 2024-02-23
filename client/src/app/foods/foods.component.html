@@ -1,32 +1,48 @@
-<button (click)="toggleAddForm()" >Add Food</button>
-
-
-<div *ngFor="let food of foods;">
-    <div>
-        {{food._id}}
-        <a [routerLink]="['/foods', food._id]">visit</a>
+<button (click)="toggleAddForm()" 
+        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
+    ADD FOOD
+</button>
+  
+<div class="flex flex-wrap">
+    <div *ngFor="let food of foods;" class="w-full md:w-1/4 px-4 py-2">
+        <div class="bg-white h-60 shadow-lg p-4 flex flex-col justify-between">
+            <div>{{ food._id }}</div>
+            <a [routerLink]="['/foods', food._id]" class="text-blue-500 self-end">View Details</a>
+        </div>
     </div>
 </div>
+  
+  
+  <div *ngIf="addFormVisible" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
+    <div class="bg-white p-8 shadow-lg w-1/2">
+      <form #form>
+        <div class="mb-4">
+          <label for="title" class="font-bold">Title&nbsp;</label>
+          <input type="text" name="" id="title" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+  
+        <div class="mb-4">
+            <label for="distributor" class="font-bold">Distributor&nbsp;</label>
+            <input type="text" name="" id="distributor" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
 
-
-
-<div *ngIf="addFormVisible;" >
-    <form #form>
-        <label for="title">Title&nbsp;</label>
-        <input type="text" name="" id="title">
-
-        <br />
-        <label for="quantity">Quantity&nbsp;</label>
-        <input type="text" name="" id="quantity">
-
-        <br />
-        <label for="location">Location&nbsp;</label>
-        <input type="text" name="" id="location">
-
-        <!-- <label for=""></label>
-        <input type="text" name="" id=""> -->
-
-        <br />
-        <input type="submit" value="Add">
-    </form>
-</div>
+        <div class="mb-4">
+          <label for="quantity" class="font-bold">Quantity&nbsp;</label>
+          <input type="text" name="" id="quantity" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+  
+        <div class="mb-4">
+          <label for="location" class="font-bold">Location&nbsp;</label>
+          <input type="text" name="" id="location" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+        </div>
+  
+        <div class="flex items-center justify-center">
+            <input type="submit" value="ADD" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">&nbsp;
+            <!-- Cancel to be implemeted -->
+            <input type="submit" value="CANCEL" class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+        </div>
+        
+      </form>
+    </div>
+  </div>
+  
