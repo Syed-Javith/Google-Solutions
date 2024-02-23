@@ -13,7 +13,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './foods.component.css'
 })
 export class FoodsComponent {
-  addFormVisible = true;
+  addFormVisible = false;
   toggleAddForm() {
     this.addFormVisible = ! this.addFormVisible
   }
