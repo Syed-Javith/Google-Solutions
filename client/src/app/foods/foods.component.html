@@ -1,1 +1,17 @@
-<p>foods works!</p>
+<div *ngFor="let food of foods;">
+    <div>
+        {{food._id}}
+        <a [routerLink]="['/foods', food._id]">visit</a>
+    </div>
+</div>
+
+<button (click)="toggleAddForm()" >Add Food</button>
+
+<div *ngIf="addFormVisible;" >
+    <form #form>
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+        <input type="text" name="" id="">
+    </form>
+</div>

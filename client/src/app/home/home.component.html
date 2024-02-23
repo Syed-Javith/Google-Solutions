@@ -6,3 +6,33 @@
   <input type="password" name="password" ngModel #password="ngModel">
   <input type="submit" value="go">
 </form>
+<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" >
+  <label htmlFor="">UserName :</label>
+  <input type="text" name="username" id="" #newUser="ngModel" ngModel/>
+
+  <br />
+  <label htmlFor="">Email :</label>
+  <input type="text" name="email" id="" #newEmail="ngModel" ngModel/>
+
+  <br />
+  <label htmlFor="">Mobile Number :</label>
+  <input type="text" name="mobileNumber" id="" ngModel #newMobileNumber="ngModel" />
+
+  <br />
+  <label htmlFor="">Location<span>(Enter pincode)</span> :</label>
+  <input type="text" name="pincode" id=""  ngModel #newPinCode="ngModel" />
+
+  <br />
+  <label htmlFor="">Password :</label>
+  <input type="password" name="password" id="" ngModel #newPassword="ngModel" />
+  <br />
+  <label htmlFor="">Role :</label>
+  <select name="role" id="role" ngModel #newRole="ngModel">
+    <option value="D">Distributor</option>
+    <option value="V">Volunteer</option>
+    <option value="G">General User</option>
+  </select>
+
+  <br />
+  <input type="submit" value="REGISTER" />
+</form>

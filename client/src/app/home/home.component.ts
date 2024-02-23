@@ -14,5 +14,7 @@ export class HomeComponent {
     onSubmit(formData : NgForm){
       console.log(formData.controls['email'].value);
       console.log(formData.controls['password'].value);
+      console.log(formData.controls['role'].value);
+
     }
 }

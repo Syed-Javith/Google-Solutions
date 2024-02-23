@@ -12,7 +12,7 @@ app.use(cors({
     credentials : true,
     methods : ['GET','POST','PUT','DELETE'],
     allowedHeaders : ['Content-Type','Authorisation'],
-    origin : ['http://localhost:3000']
+    origin : ['http://localhost:4200']
 }))
 app.use(bodyParser.urlencoded({ extended : true }))
 app.use('/',authRoutes)
