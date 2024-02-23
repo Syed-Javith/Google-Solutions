@@ -1,16 +1,16 @@
 
-<div *ngIf="showLoginForm; else registerForm">
+<div *ngIf="showLoginForm; else registerForm" class="">
   <div>
-    <span>New User? Then register now!</span>&nbsp;
+    <span class="text-orange-500">New User? Then register now!</span>&nbsp;
     <button (click)="toggleForm()">REGISTER</button>
   </div>
   
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <label for="loginEmail">Email : </label>
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" >
+    <label for="loginEmail">Email&nbsp;</label>
     <input type="text" name="email" id="loginEmail" placeholder="username@gmail.com" ngModel #email="ngModel">
 
     <br/>
-    <label for="loginPassword">Password : </label>
+    <label for="loginPassword">Password&nbsp;</label>
     <input type="password" name="password" id="loginPassword" placeholder="********" ngModel #password="ngModel">
 
     <br/>
@@ -20,31 +20,31 @@
 
   <ng-template #registerForm>
     <div>
-      <span>Already a user? Login to continue!</span>&nbsp;
+      <span class="text-orange-500">Already a user? Login to continue!</span>&nbsp;
       <button (click)="toggleForm()">LOGIN</button>
     </div>
     
     <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" >
-      <label for="regUsername">UserName :</label>
+      <label for="regUsername">UserName&nbsp;</label>
       <input type="text" name="username" id="regUsername" #newUser="ngModel" ngModel/>
 
       <br />
-      <label for="regEmail">Email :</label>
+      <label for="regEmail">Email&nbsp;</label>
       <input type="text" name="email" id="regEmail" #newEmail="ngModel" ngModel/>
 
       <br />
-      <label for="regMobile">Mobile Number :</label>
+      <label for="regMobile">Mobile Number&nbsp;</label>
       <input type="text" name="mobileNumber" id="regEmail" ngModel #newMobileNumber="ngModel" />
 
       <br />
-      <label for="regLocation">Location<span>(Enter pincode)</span> :</label>
+      <label for="regLocation">Location<span>(Enter pincode)</span>&nbsp;</label>
       <input type="text" name="pincode" id="regLocation"  ngModel #newPinCode="ngModel" />
 
       <br />
-      <label for="regPassword">Password :</label>
+      <label for="regPassword">Password&nbsp;</label>
       <input type="password" name="password" id="regPassword" ngModel #newPassword="ngModel" />
       <br />
-      <label for="role">Role :</label>
+      <label for="role">Role&nbsp;</label>
       <select name="role" id="role" ngModel #newRole="ngModel">
         <option value="D">Distributor</option>
         <option value="V">Volunteer</option>
