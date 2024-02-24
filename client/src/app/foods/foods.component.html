@@ -1,13 +1,26 @@
-<button (click)="toggleAddForm()" 
-        class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
+<div class="mt-20 mb-10 text-right mr-6 pr-8">
+  <button (click)="toggleAddForm()" 
+    class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
     ADD FOOD
-</button>
-  
-<div class="flex flex-wrap">
-    <div *ngFor="let food of foods;" class="w-full md:w-1/4 px-4 py-2">
-        <div class="bg-white h-60 shadow-lg p-4 flex flex-col justify-between">
-            <div>{{ food._id }}</div>
-            <a [routerLink]="['/foods', food._id]" class="text-blue-500 self-end">View Details</a>
+  </button>
+  &nbsp;
+  <button class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4">
+    VIEW REQUESTS
+  </button>
+</div>
+
+
+<div class="flex flex-wrap px-4 mx-6">
+    <div *ngFor="let food of foods;" class="w-full md:w-1/4 px-4 py-4">
+        <div class="bg-white h-72 shadow-lg p-2 flex flex-col justify-between items-center border border-slate-500">
+            <div>
+              <img [src]="food?.image" alt="food-image" class="" height="250px" width="250px">
+              <p>{{ food.distributor }}</p>
+              <!-- <p>{{ food.description }}</p> -->
+              <p>{{ food.foods }}</p>
+              <p>{{ food.location }}</p>
+            </div>
+            <a [routerLink]="['/foods', food._id]" class="text-blue-500 self-end underline">View Details</a>
         </div>
     </div>
 </div>
