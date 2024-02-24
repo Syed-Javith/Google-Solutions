@@ -1,7 +1,10 @@
 <!-- <p>Hello!</p> -->
 <!-- <p>food-item works! {{ id }} </p> -->
+<div  *ngIf="isLoading" >
+    <p>fetching...</p>
+</div>
 
-<div class="flex justify-center items-center h-screen">
+<div *ngIf="!isLoading" class="flex justify-center items-center h-screen">
     <img [src]="food?.image" alt="food-image" class="mr-5" height="400px" width="400px">
 
     <div>

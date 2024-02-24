@@ -14,18 +14,23 @@ import { RouterModule } from '@angular/router';
 })
 export class FoodsComponent {
   addFormVisible = false;
+  isPending = false;
   toggleAddForm() {
     this.addFormVisible = ! this.addFormVisible
   }
   foods : Food[] = [] ;
   constructor(private FoodService: FoodService) {
+    this.isPending = true
     this.FoodService.getFoods().subscribe(
       (res : Food[]) => {
       this.foods = res;
+      console.log(this.foods);
+      this.isPending = false
     }
     ,
     (err) => {
       console.log(err);
+      this.isPending = false
     }) 
   }
 }
