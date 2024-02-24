@@ -1,60 +1,69 @@
-<div *ngIf="showLoginForm; else registerForm" class="">
+
+<div *ngIf="showLoginForm; else registerForm" class="text-right mr-10 mt-10">
   <div>
-    <span class="text-orange-500">New User? Then register now!</span>&nbsp;
-    <button (click)="toggleForm()">REGISTER</button>
+    <button (click)="toggleForm()" class="text-orange-500 font-bold hover:text-orange-400">New User? Click here to register now!</button>
   </div>
+  
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="mx-96 my-36" >
+    <!-- <label for="loginEmail">Email&nbsp;</label> -->
+    <input type="text" name="email" id="loginEmail" placeholder="Email" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full focus:placeholder-transparent" ngModel #email="ngModel">
 
-  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <div>
-      <label for="loginEmail">Email&nbsp;</label>
-      <input type="text" name="email" id="loginEmail" placeholder="username@gmail.com" ngModel #email="ngModel">
-    </div>
+    <br/>
+    <br/>
+    <!-- <label for="loginPassword">Password&nbsp;</label> -->
+    <input type="password" name="password" id="loginPassword" placeholder="Password" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full focus:placeholder-transparent" ngModel #password="ngModel">
 
-    <br />
-    <div>
-      <label for="loginPassword">Password&nbsp;</label>
-      <input type="password" name="password" id="loginPassword" placeholder="********" ngModel #password="ngModel">
-
-    </div>
-    <br />
-    <input type="submit" value="LOGIN">
+    <br/>
+    <br/>
+    <br/>
+    <input type="submit" value="LOGIN" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
   </form>
 </div>
 
-<ng-template #registerForm>
-  <div>
-    <span class="text-orange-500">Already a user? Login to continue!</span>&nbsp;
-    <button (click)="toggleForm()">LOGIN</button>
-  </div>
+  <ng-template #registerForm >
+    <div class="text-right mr-10 mt-10">
+      <button (click)="toggleForm()" class="text-orange-500 font-bold hover:text-orange-400">Already a user? Click here to Login back!</button>
+    </div>
+    
+    <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm" class="mx-60 my-12">
+      <label for="regUsername">UserName&nbsp;</label>
+      <br />
+      <input type="text" name="username" id="regUsername" placeholder="" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" #newUser="ngModel" ngModel/>
 
-  <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
-    <label for="regUsername">UserName&nbsp;</label>
-    <input type="text" name="username" id="regUsername" #newUser="ngModel" ngModel />
+      <br /><br />
+      <label for="regEmail">Email&nbsp;</label>
+      <br />
+      <input type="text" name="email" id="regEmail" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" #newEmail="ngModel" ngModel/>
 
-    <br />
-    <label for="regEmail">Email&nbsp;</label>
-    <input type="text" name="email" id="regEmail" #newEmail="ngModel" ngModel />
+      <br /><br />
+      <label for="regMobile">Mobile Number&nbsp;</label>
+      <br />
+      <input type="text" name="mobileNumber" id="regEmail" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" ngModel #newMobileNumber="ngModel" />
 
-    <br />
-    <label for="regMobile">Mobile Number&nbsp;</label>
-    <input type="text" name="mobileNumber" id="regEmail" ngModel #newMobileNumber="ngModel" />
+      <br /><br />
+      <label for="regLocation">Location&nbsp;<span>(Enter pincode)</span></label>
+      <br />
+      <input type="text" name="pincode" id="regLocation" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" ngModel #newPinCode="ngModel" />
 
-    <br />
-    <label for="regLocation">Location<span>(Enter pincode)</span>&nbsp;</label>
-    <input type="text" name="pincode" id="regLocation" ngModel #newPinCode="ngModel" />
+      <br /><br />
+      <label for="regPassword">Password&nbsp;</label>
+      <br />
+      <input type="password" name="password" id="regPassword" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" ngModel #newPassword="ngModel" />
+      
+      <br /><br />
+      <label for="role">Role&nbsp;</label>
+      <br />
+      <select name="role" id="role" class="focus:outline-none border-b-2 focus:border-b-orange-500 w-full" ngModel #newRole="ngModel">
+        <option value="D" class="border rounded-none bg-white hover:bg-orange-400">Distributor</option>
+        <option value="V" class="border rounded-none bg-white hover:bg-orange-400">Volunteer</option>
+        <option value="G" class="border rounded-none bg-white hover:bg-orange-400">General User</option>
+      </select>
 
-    <br />
-    <label for="regPassword">Password&nbsp;</label>
-    <input type="password" name="password" id="regPassword" ngModel #newPassword="ngModel" />
-    <br />
-    <label for="role">Role&nbsp;</label>
-    <select name="role" id="role" ngModel #newRole="ngModel">
-      <option value="D">Distributor</option>
-      <option value="V">Volunteer</option>
-      <option value="G">General User</option>
-    </select>
-
-    <br />
-    <input type="submit" value="REGISTER" />
-  </form>
-</ng-template>
+      <br/>
+      <br/>
+      <div class="text-right">
+        <input type="submit" value="REGISTER" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline" />
+      </div>
+      
+    </form>
+  </ng-template>

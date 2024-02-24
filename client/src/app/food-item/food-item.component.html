@@ -4,13 +4,27 @@
     <p>fetching...</p>
 </div>
 
-<div *ngIf="!isLoading" class="flex justify-center items-center h-screen">
-    <img [src]="food?.image" alt="food-image" class="mr-5" height="400px" width="400px">
+<p class="font-bold text-center mt-10 uppercase text-3xl text-slate-500"> {{ food?.distributor }} </p> 
+<div *ngIf="!isLoading" class="flex mt-10 ml-20  mr-20">
+    <img [src]="food?.image" alt="food-image" class="mr-5 border-2 shadow-lg border-slate-500" height="600px" width="500px">
 
     <div>
-        <p> {{ food?.foods }} </p>
-        <p> {{ food?.location }} </p>
-        <p> {{ food?.distributor }} </p>  
+        <p class=" text-slate-500"> {{ food?.foods }} </p>
+        <p class=" text-slate-500"> {{ food?.location }} </p>
+        <p class=" text-slate-500"> {{ food?.description }} </p>
+
     </div>
       
 </div>
+
+<div class="mt-10 mb-10 text-right mr-12 pr-8">
+    <button 
+      class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
+      TAKE ORDER
+    </button>
+    &nbsp;
+    <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
+      REQUEST FOOD
+    </button>
+  </div>
+
