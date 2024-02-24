@@ -1,7 +1,7 @@
 
 <div *ngIf="showLoginForm; else registerForm" class="text-right mr-10 mt-10">
   <div>
-    <button (click)="toggleForm()" class="text-orange-500 font-bold hover:text-orange-400">New User? Then click here to register now!</button>
+    <button (click)="toggleForm()" class="text-orange-500 font-bold hover:text-orange-400">New User? Click here to register now!</button>
   </div>
   
   <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="mx-96 my-36" >
