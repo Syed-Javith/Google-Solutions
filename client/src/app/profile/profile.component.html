@@ -22,6 +22,8 @@
 
         <br>
         <p class=" text-slate-600 font-bold bg-slate-400 uppercase p-2">Role: </p>
-        <p class=" text-slate-600 bg-slate-300 p-2">{{profile?.role}}</p>
+        <p class="text-slate-600 bg-slate-300 p-2">
+            {{ profile?.role === 'V' ? 'Volunteer' : (profile?.role === 'D' ? 'Distributor' : 'General User') }}
+        </p>
     
 </div>
