@@ -1,6 +1,6 @@
 <div *ngIf="currentUser" class="group flex items-center self-end pb-4 pt-4 pr-5 bg-slate-500" dir="rtl">
   
-  <a routerLink="/currentUser" class="">
+  <a routerLink="/profile" class="">
   <img class="shrink-0 h-12 w-12 rounded-full" src="../../assets/user.png" alt="profile-icon" />
   </a>
   <div class="rtl:ml-3 ltr:mr-3">
@@ -23,7 +23,6 @@
 <div *ngIf="isPending" class="text-center mx-auto mt-[20%] text-orange-500 font-semibold">
   <p class="md:text-2xl text-sm">Loading...</p>
 </div>
-
 
 <div *ngIf="!isPending" class="flex flex-wrap px-4 mx-6">
     <div *ngFor="let food of foods;" class="w-full md:w-1/4 px-4 py-4">

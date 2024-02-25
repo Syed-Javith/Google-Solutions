@@ -1,6 +1,6 @@
 const express = require('express');
 const User = require('../models/user.model');
-
+const jwt = require('jsonwebtoken')
 const router = express.Router();
 
 router.post('/auth/login',async (req,res)=> {
@@ -8,13 +8,27 @@ router.post('/auth/login',async (req,res)=> {
         const { email , password } = req.body;
         const existingUser = await User.findOne({ email , password },{ password : 0 })
         if(!existingUser) return res.status(404).send({ message : "User not found" })
-        return res.status(200).send(existingUser)
+        const token = jwt.sign({ user : existingUser },"MY_KEY", { expiresIn : 1*24*60*60 })
+        // return res.status(200).send(existingUser)
+        return res.status(200).send({ token });
     } catch (error) {
         console.log(error);
         return res.status(500).send({ message : "Internal server error" })
     }
 })
-
+router.get('/auth/verify/:token', (req,res)=> {
+    try {
+        const { token } = req.params;
+         jwt.verify( token ,"MY_KEY", ( err , decoded ) => {
+            console.log(err);
+            if(err) return res.status(400).send({ err });
+            if(decoded) return res.status(200).send({ user : decoded });
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ message : "Internal server error" })
+    }
+})
 router.post('/auth/register', async(req,res)=> {
     try {
         const { username , password , mobileNumber , email , pincode , role } = req.body;

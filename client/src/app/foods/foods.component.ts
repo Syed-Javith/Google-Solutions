@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 import { FoodService } from '../services/food.service';
 import { AddFood, Food, User } from '../types/food.types';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-foods',
   standalone: true,
   imports: [CommonModule, RouterModule, FormsModule],
-  providers: [FoodService],
+  providers: [FoodService, UserService],
   templateUrl: './foods.component.html',
   styleUrl: './foods.component.css'
 })
@@ -22,10 +23,20 @@ export class FoodsComponent {
     this.addFormVisible = !this.addFormVisible
   }
   foods: Food[] = [];
-  constructor(private FoodService: FoodService, private cookieService: CookieService) {
+  constructor(private FoodService: FoodService, private cookieService: CookieService, private userService: UserService) {
     this.isPending = true
-    const cookie = this.cookieService.get('user')
-    if (cookie) this.currentUser = JSON.parse(cookie)
+    const cookie = this.cookieService.get('token')
+    // if (cookie) this.currentUser = JSON.parse(cookie)
+    this.userService.verifyUser(cookie.replace(/^"(.*)"$/, '$1')).subscribe(
+      (res) => {
+        this.currentUser = res.user.user
+        console.log(this.currentUser);   
+      },
+      (err) => {
+        console.log(err);
+        
+      }
+    )
     this.FoodService.getFoods().subscribe(
       (res: Food[]) => {
         this.foods = res;
@@ -43,7 +54,7 @@ export class FoodsComponent {
     const addData: AddFood = { description: data.controls['description'].value, distributor: this.currentUser?.username + "", foods: data.controls['foods'].value, image: data.controls['image'].value, location: data.controls['pincode'].value }
     this.FoodService.addFood(addData).subscribe((res) => {
       console.log(res);
-      this.addFormVisible=false
+      this.addFormVisible = false
     },
       (err) => {
         console.log(err);

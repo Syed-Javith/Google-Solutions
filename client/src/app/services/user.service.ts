@@ -10,8 +10,8 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
   
-  loginUser(data : LoginUser) : Observable<User>{
-    return this.http.post<User>('http://localhost:8000/auth/login',data)
+  loginUser(data : LoginUser) : Observable<any>{
+    return this.http.post<any>('http://localhost:8000/auth/login',data)
   }
 
   registerUser(data : RegisterUser ) : Observable<any>{
@@ -20,5 +20,8 @@ export class UserService {
 
   getUser(id : String ) : Observable<User>{
     return this.http.get<User>('http://localhost:8000/auth/user/'+id)
+  }
+  verifyUser(token : String) : Observable<any> {
+    return this.http.get<any>('http://localhost:8000/auth/verify/'+token)
   }
 }

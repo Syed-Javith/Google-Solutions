@@ -7,12 +7,13 @@ import { NgIf } from '@angular/common';
 import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, NgModel } from '@angular/forms';
 import { RequestService } from '../services/request.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-food-item',
   standalone: true,
   imports: [NgIf, FormsModule],
-  providers: [FoodService, RequestService],
+  providers: [FoodService, RequestService , UserService],
   templateUrl: './food-item.component.html',
   styleUrl: './food-item.component.css'
 })
@@ -24,11 +25,21 @@ export class FoodItemComponent {
   id = '0';
   isLoading = false
   fetchError = false
-  constructor(private router: ActivatedRoute, private navigate: Router, private foodService: FoodService, private cookieService: CookieService, private requestService: RequestService) {
+  constructor(private router: ActivatedRoute, private navigate: Router, private foodService: FoodService, private cookieService: CookieService, private requestService: RequestService , private userService : UserService) {
     this.id = this.router.snapshot.paramMap.get('id') || '0'
     this.isLoading = true
-    const cookie = this.cookieService.get('user')
-    if (cookie) this.currentUser = JSON.parse(cookie)
+    const cookie = this.cookieService.get('token')
+    // if (cookie) this.currentUser = JSON.parse(cookie)
+    if(cookie){
+      this.userService.verifyUser(cookie.replace(/^"(.*)"$/, '$1')).subscribe(
+        (res) => {
+          this.currentUser = res.user.user
+          console.log(this.currentUser);   
+        },
+        (err) => {
+          console.log(err);  
+        })
+    }
     else this.navigate.navigate(['/'])
     this.foodService.getFood(this.id).subscribe((res: Food) => {
       this.food = res

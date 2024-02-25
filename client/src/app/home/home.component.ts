@@ -31,7 +31,7 @@ export class HomeComponent {
       const data: LoginUser = { email, password }
       this.userService.loginUser(data).subscribe((res) => {
         console.log(res);
-        this.cookies.set('user',JSON.stringify(res), new Date( Date.now() + (1000 * 60 * 60 * 24)) , '/' )
+        this.cookies.set('token', JSON.stringify(res.token) , new Date( Date.now() + (1000 * 60 * 60 * 24)) , '/' )
         this.router.navigate(['/foods'])
       },
         (err) => {
