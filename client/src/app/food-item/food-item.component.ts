@@ -51,6 +51,7 @@ export class FoodItemComponent {
     this.requestService.VolunteerEnterToken({ token, requestId, foodId: this.food?._id }).subscribe((res) => {
       console.log(res);
       alert("your order has been completed")
+      this.navigate.navigate(['/requests'])
     },
       (err) => {
         console.log(err);
@@ -62,6 +63,7 @@ export class FoodItemComponent {
     this.requestService.makeRequestForFood(data).subscribe((res) => {
       console.log(res);
       alert("your request has been submitted,you will get a code when a volunteer pick your order.")
+      this.navigate.navigate(['/foods'])
     },
     (err) => {
         console.log(err);
