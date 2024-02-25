@@ -7,7 +7,9 @@
     <p class="font-medium text-xl text-black">&nbsp;&nbsp;{{ currentUser.username }}</p>
     <p class="text-sm font-medium text-gray-700 ">&nbsp;&nbsp;{{ currentUser.role === 'V' ? 'Volunteer' : (currentUser.role === 'D' ? 'Distributor' : 'General User') }}</p>
   </div>
-  
+  <div>
+    <button (click)="logout()">logout</button>
+  </div>
 </div>
 
 <div class="mt-10 mb-10 text-right mr-6 pr-8">

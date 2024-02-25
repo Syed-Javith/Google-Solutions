@@ -23,7 +23,7 @@ export class FoodsComponent {
     this.addFormVisible = !this.addFormVisible
   }
   foods: Food[] = [];
-  constructor(private FoodService: FoodService, private cookieService: CookieService, private userService: UserService) {
+  constructor(private FoodService: FoodService, private cookieService: CookieService, private userService: UserService, private navigate : Router) {
     this.isPending = true
     const cookie = this.cookieService.get('token')
     // if (cookie) this.currentUser = JSON.parse(cookie)
@@ -60,5 +60,10 @@ export class FoodsComponent {
         console.log(err);
 
       })
+  }
+
+  logout(){
+    this.cookieService.delete('token');
+    this.navigate.navigate(['/'])
   }
 }
