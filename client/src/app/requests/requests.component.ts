@@ -4,6 +4,7 @@ import { RequestService } from '../services/request.service';
 import { UserService } from '../services/user.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-requests',
@@ -15,6 +16,7 @@ import { RouterModule } from '@angular/router';
 })
 export class RequestsComponent {
   requests: Request[] = [];
+  messages: Message[] | undefined;
 
   constructor(private requestService: RequestService, private userService: UserService) {
     this.requestService.getRequests().subscribe(
@@ -46,6 +48,7 @@ export class RequestsComponent {
     const data  = { foodId , requestId , email}
     this.requestService.VolunteerTakeRequest(data).subscribe((res)=> {
       console.log(res);
+      alert('your order has been taken,code has been sent to requested user')
     }, (err) => {
       console.log(err);  
     })

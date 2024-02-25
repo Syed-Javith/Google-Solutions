@@ -22,13 +22,10 @@
                 <a [routerLink]="['/foods', request.foodId]" [queryParams]="{ requestId:request._id}" class="text-blue-500 self-end underline">
                     Food details</a>
                 &nbsp;
-                <button [disabled]="request.isTaken" (click)="takeRequest(request.foodId , request._id , request.user.email)" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 uppercase">
-                    Take order
+                <button [disabled]="request.isTaken===true" (click)="takeRequest(request.foodId , request._id , request.user.email)" class="bg-orange-500 hover:bg-orange-700 disabled:bg-transparent text-white font-bold py-2 px-4 uppercase">
+                    {{ request.isTaken ? "Order taken" : "Take order" }}
                 </button>
-            </div>
-            
-            <!-- <p class="mb-10"></p> -->
-            
+            </div>            
         </div>
     </div>
 </div>
