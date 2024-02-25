@@ -27,6 +27,7 @@ export class FoodsComponent {
     this.isPending = true
     const cookie = this.cookieService.get('token')
     // if (cookie) this.currentUser = JSON.parse(cookie)
+    if(!cookie) this.navigate.navigate(['/'])
     this.userService.verifyUser(cookie.replace(/^"(.*)"$/, '$1')).subscribe(
       (res) => {
         this.currentUser = res.user.user
