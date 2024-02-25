@@ -19,4 +19,7 @@ export class FoodService {
   addFood(data : AddFood) : Observable<Food> {
     return this.http.post<Food>('http://localhost:8000/food',data)
   }
+  getFoodByVolunteer(data : any) : Observable<any>{
+    return this.http.delete('http://localhost:8000/food/'+ data)
+  }
 }

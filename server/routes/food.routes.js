@@ -119,4 +119,19 @@ router.post('/food/receive/:id', async (req, res) => {
         })
     }
 })
+router.delete('/food/:id', async (req,res)=>{
+    try {
+        const { id } = req.params;
+        console.log(id);
+        const deletePost = await Post.deleteOne({ _id : id })
+        console.log(deletePost);
+        if(deletePost.deletedCount>0) return res.status(200).send({ message : "Deleted successfully!" })
+        return res.status(404).send({ message : "No such food available" })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({
+            message: "Internal server error"
+        })
+    }
+})
 module.exports = router

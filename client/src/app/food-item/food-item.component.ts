@@ -69,4 +69,20 @@ export class FoodItemComponent {
     )
   }
 
+  takeFoodOrderAsVolunteer(){
+    const  id = this.food?._id 
+    console.log(id);
+    this.foodService.getFoodByVolunteer(id).subscribe(
+      (res) => {
+        if(res.ok) console.log("taken order");
+        console.log(res);
+        
+        this.navigate.navigate(['/foods'])
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
 }
