@@ -8,7 +8,7 @@ Install nodemon
 Install angular/cli
 
 
-## Usage:
+## Usage
 Clone this repository to your local machine 
 ```
 git clone https://github.com/Syed-Javith/Google-Solutions.git
