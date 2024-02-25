@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Food } from '../types/food.types';
+import { AddFood, Food } from '../types/food.types';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,8 @@ export class FoodService {
   }
   getFood(id : String) : Observable<Food> {
     return this.http.get<Food>('http://localhost:8000/food/'+id);
+  }
+  addFood(data : AddFood) : Observable<Food> {
+    return this.http.post<Food>('http://localhost:8000/food',data)
   }
 }

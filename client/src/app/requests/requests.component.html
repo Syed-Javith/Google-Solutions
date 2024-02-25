@@ -6,10 +6,10 @@
         <p>{{ request.user.username }}</p>
         <p>{{ request.user.mobileNumber }}</p>
         <p>{{ request.user.pincode }}</p>
-        <a [routerLink]="['/foods', request.foodId]">
+        <a [routerLink]="['/foods', request.foodId]" [queryParams]="{ requestId:request._id}">
             for details
         </a>
-        <button (click)="takeRequest(request.foodId , request._id)" >
+        <button [disabled]="request.isTaken" (click)="takeRequest(request.foodId , request._id , request.user.email)" >
             take order
         </button>
     </div>
