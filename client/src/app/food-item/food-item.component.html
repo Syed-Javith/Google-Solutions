@@ -38,7 +38,7 @@
       REQUEST FOOD
     </button>
     <form (ngSubmit)="confirmDeleivery(token)" *ngIf="food?.isBooked">
-      <input class="bg-slate-200 py-2 px-4" required="true" name="token" #token="ngModel" ngModel />
+      <input class="bg-slate-200 py-2 px-4" placeholder="Enter your code" required="true" name="token" #token="ngModel" ngModel />
       <input  class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md" type="submit" value="submit">
     </form>
   </div>
