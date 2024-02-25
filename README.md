@@ -33,6 +33,10 @@ In another terminal open server directory to run the backend server
 ```
 cd Google-Solutions\server
 ```
+Install dependencies
+```
+npm i
+```
 Start Server
 ```
 nodemon server.js
