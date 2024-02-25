@@ -12,10 +12,12 @@
 <div *ngIf="!isLoading" class="flex mt-10 ml-20  mr-20">
     <img [src]="food?.image" alt="food-image" class="mr-5 border-2 shadow-lg border-slate-500" height="600px" width="500px">
 
-    <div>
-        <p class=" text-slate-500"> {{ food?.foods }} </p>
-        <p class=" text-slate-500"> {{ food?.location }} </p>
-        <p class=" text-slate-500"> {{ food?.description }} </p>
+    <div class="mt-10 ml-10">
+        <p class=" text-slate-600 font-bold">Foods Available:&nbsp;</p><p class=" text-slate-500"> {{ food?.foods }} </p>
+        <br>
+        <p class=" text-slate-600 font-bold">Location:&nbsp;</p><p class=" text-slate-500"> {{ food?.location }} </p>
+        <br>
+        <p *ngIf="food?.description" class=" text-slate-600 font-bold">Description:&nbsp;</p><p class=" text-slate-500"> {{ food?.description }} </p>
 
     </div>
       
