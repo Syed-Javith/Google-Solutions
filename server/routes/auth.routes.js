@@ -24,7 +24,7 @@ router.post('/auth/register', async(req,res)=> {
             username,password,mobileNumber,email,pincode , role , isAdmin : false
         })
         await newUser.save()
-        res.status(200).send({ message : "Login successful" })
+        res.status(200).send({ message : "Register successful" })
     } catch (error) {
         console.log(error);
         return res.status(500).send({ message : "internal server error" })
