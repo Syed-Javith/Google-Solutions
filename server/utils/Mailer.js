@@ -15,7 +15,7 @@ const sendEmail = async (email,code) => {
         from: '210701278@rajalakshmi.edu.in',
         to: email ,
         subject: "Your request has been accepted by a volunteer",
-        text: `Here is your code for the volunteer ${code},please don't share until you have been contacted by the vlonteer on deleivery.`,
+        text: `Here is your code for the volunteer ${code}, Please don't share until you have been contacted by the volunteer on delivery.`,
       };
       
       await transporter.sendMail(mailOptions, function(error, info){

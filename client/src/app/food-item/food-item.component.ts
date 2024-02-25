@@ -50,8 +50,7 @@ export class FoodItemComponent {
     });
     this.requestService.VolunteerEnterToken({ token, requestId, foodId: this.food?._id }).subscribe((res) => {
       console.log(res);
-      alert("your order has been completed")
-      this.navigate.navigate(['/requests'])
+      alert("Your order has been completed")
     },
       (err) => {
         console.log(err);
@@ -62,8 +61,7 @@ export class FoodItemComponent {
     const data = { foodId: this.food?._id, userId: this.currentUser?._id, foods: this.food?.foods }
     this.requestService.makeRequestForFood(data).subscribe((res) => {
       console.log(res);
-      alert("your request has been submitted,you will get a code when a volunteer pick your order.")
-      this.navigate.navigate(['/foods'])
+      alert("Your request has been submitted, you will get a code when a volunteer picks up your order.")
     },
     (err) => {
         console.log(err);
@@ -78,7 +76,7 @@ export class FoodItemComponent {
       (res) => {
         if(res.ok) console.log("taken order");
         console.log(res);
-        alert('you can proceed with your order, check your mail.')
+        alert('You can proceed with your order.')
         this.navigate.navigate(['/foods'])
       },
       (err) => {
