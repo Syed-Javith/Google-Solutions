@@ -19,6 +19,7 @@ export class FoodItemComponent {
 
   id = '0';
   isLoading = false
+  fetchError = false
   constructor(private router: ActivatedRoute, private foodService: FoodService) {
     this.id = this.router.snapshot.paramMap.get('id') || '0'
     this.isLoading = true
@@ -28,6 +29,7 @@ export class FoodItemComponent {
     },
       (err) => {
         console.log(err);
+        if(!err.ok) this.fetchError = true
         this.isLoading = false
       })
   }

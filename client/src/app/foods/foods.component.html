@@ -1,22 +1,27 @@
+<div style="justify-content: end;" *ngIf="currentUser" class="w-screen flex flex-row items-center justify-end p-2">
+  <a routerLink="/profile" >
+    profile
+  </a>
+</div>
 <div class="mt-20 mb-10 text-right mr-6 pr-8">
   <button *ngIf="currentUser?.role === 'D'" (click)="toggleAddForm()" 
     class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
     ADD FOOD
   </button>
   &nbsp;
-  <button class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4">
+  <button class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-[20px]">
     VIEW REQUESTS
   </button>
 </div>
 <div *ngIf="isPending" class="text-center mx-auto mt-[20%] font-bold">
-  <p class="text-[3rem]">loading...Please wait</p>
+  <p class="md:text-[2rem] text-[1.5rem]">loading...Please wait</p>
 </div>
 
 <div *ngIf="!isPending" class="flex flex-wrap px-4 mx-6">
     <div *ngFor="let food of foods;" class="w-full md:w-1/4 px-4 py-4">
-        <div class="bg-white h-72 shadow-lg p-2 flex flex-col justify-between items-center border border-slate-500">
+        <div style="min-width: 200px;" class="bg-white h-72 shadow-lg p-2 flex flex-col justify-between items-center border border-slate-500">
             <div>
-              <img [src]="food?.image" alt="food-image" class="object-contain max-h-[150px] max-w-[150px]" [height]="250" [width]="250">
+              <img [src]="food?.image" alt="food-image" class="mx-auto object-contain max-h-[150px] max-w-[150px]" [height]="250" [width]="250">
               <p>{{ food.distributor }}</p>
               <!-- <p>{{ food.description }}</p> -->
               <p>{{ food.foods }}</p>

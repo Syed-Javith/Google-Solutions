@@ -1,10 +1,14 @@
 <!-- <p>Hello!</p> -->
 <!-- <p>food-item works! {{ id }} </p> -->
-<div  *ngIf="isLoading" >
+<div  *ngIf="isLoading"  class="text-center mx-auto mt-[20%] font-bold" >
     <p>fetching...</p>
 </div>
-
-<p class="font-bold text-center mt-10 uppercase text-3xl text-slate-500"> {{ food?.distributor }} </p> 
+<div *ngIf="fetchError"  class="text-center mx-auto mt-[2rem] font-bold">
+  <p>No such product is available!</p>
+  <img src="../../assets/404.jpg" alt="" srcset="" class="mx-auto h-[150px]"> 
+</div>
+<div *ngIf="!isLoading && !fetchError">
+  <p class="font-bold text-center mt-10 uppercase text-3xl text-slate-500"> {{ food?.distributor }} </p> 
 <div *ngIf="!isLoading" class="flex mt-10 ml-20  mr-20">
     <img [src]="food?.image" alt="food-image" class="mr-5 border-2 shadow-lg border-slate-500" height="600px" width="500px">
 
@@ -28,3 +32,5 @@
     </button>
   </div>
 
+
+</div>
