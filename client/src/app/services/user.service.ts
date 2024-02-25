@@ -17,4 +17,8 @@ export class UserService {
   registerUser(data : RegisterUser ) : Observable<any>{
     return this.http.post<any>('http://localhost:8000/auth/register',data)
   }
+
+  getUser(id : String ) : Observable<User>{
+    return this.http.get<User>('http://localhost:8000/auth/user/'+id)
+  }
 }

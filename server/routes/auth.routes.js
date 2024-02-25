@@ -11,7 +11,7 @@ router.post('/auth/login',async (req,res)=> {
         return res.status(200).send(existingUser)
     } catch (error) {
         console.log(error);
-        return res.status(500).send({ message : "internal server error" })
+        return res.status(500).send({ message : "Internal server error" })
     }
 })
 
@@ -27,7 +27,20 @@ router.post('/auth/register', async(req,res)=> {
         res.status(200).send({ message : "Register successful" })
     } catch (error) {
         console.log(error);
-        return res.status(500).send({ message : "internal server error" })
+        return res.status(500).send({ message : "Internal server error" })
+    }
+})
+
+
+router.get('/auth/user/:id', async ( req , res ) => {
+    try {
+        const { id } = req.params;
+        const user = await User.findOne({ _id : id },{ password : 0 })
+        if(!user) return res.status(404).send({ message : "User not found" });
+        res.status(200).send(user)
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({ message : "Internal server error" })
     }
 })
 

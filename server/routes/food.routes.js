@@ -10,7 +10,7 @@ router.get('/food', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            message: "internal server error"
+            message: "Internal server error"
         })
     }
 })
@@ -26,7 +26,7 @@ router.get('/food/:id', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            message: "internal server error"
+            message: "Internal server error"
         })
     }
 })
@@ -55,7 +55,7 @@ router.post('/food', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            message: "internal server error"
+            message: "Internal server error"
         })
     }
 })
@@ -79,7 +79,7 @@ router.post('/food/code/:id', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            message: "internal server error"
+            message: "Internal server error"
         })
     }
 })
@@ -115,7 +115,7 @@ router.post('/food/receive/:id', async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            message: "internal server error"
+            message: "Internal server error"
         })
     }
 })

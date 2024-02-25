@@ -29,3 +29,10 @@ export interface RegisterUser{
     role: "G" | "D" | "V",
     password : String
 }
+export interface Request{
+    user : User ,
+    userId : String ,
+    foodId : String ,
+    foods : String ,
+_id : String
+}
