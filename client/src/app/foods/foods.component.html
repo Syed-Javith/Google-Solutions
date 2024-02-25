@@ -16,9 +16,9 @@
     ADD FOOD
   </button>
   &nbsp;
-  <button class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-[20px]">
+  <a routerLink="/requests" class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 rounded-[20px]">
     VIEW REQUESTS
-  </button>
+  </a>
 </div>
 <div *ngIf="isPending" class="text-center mx-auto mt-[20%] text-orange-500 font-semibold">
   <p class="md:text-2xl text-sm">Loading...</p>
@@ -43,31 +43,37 @@
   
   <div *ngIf="addFormVisible" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75">
     <div class="bg-white p-8 shadow-lg w-1/2">
-      <form #form>
+      <form (ngSubmit)="addFood(form)" #form="ngForm">
+        
+        <!-- <div class="mb-4">
+            <label for="distributor" class="font-bold">Distributor&nbsp;</label>
+            <input type="text" name="" id="distributor" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+        </div> -->
+
         <div class="mb-4">
-          <label for="title" class="font-bold">Title&nbsp;</label>
-          <input type="text" name="" id="title" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+          <label for="description" class="font-bold">Description&nbsp;</label>
+          <input type="text" name="description" id="description" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" #description="ngModel" ngModel >
         </div>
   
         <div class="mb-4">
-            <label for="distributor" class="font-bold">Distributor&nbsp;</label>
-            <input type="text" name="" id="distributor" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+          <label for="foods" class="font-bold">Foods&nbsp;</label>
+          <!-- <p>list of foods and foods seperated by comma(,)</p> -->
+          <input type="text" name="foods" id="foods" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="list of foods and quantity seperated by comma( , )"  #foods="ngModel" ngModel>
+        </div>
+  
+        <div class="mb-4">
+          <label for="pincode" class="font-bold">Location&nbsp;</label>
+          <input type="text" name="pincode" id="pincode" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="Enter your location as pincode"  #pincode="ngModel" ngModel>
         </div>
 
         <div class="mb-4">
-          <label for="quantity" class="font-bold">Quantity&nbsp;</label>
-          <input type="text" name="" id="quantity" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
+          <label for="image" class="font-bold">Image&nbsp;</label>
+          <input type="text" name="image" id="image" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="link for the image to display"  #image="ngModel" ngModel>
         </div>
-  
-        <div class="mb-4">
-          <label for="location" class="font-bold">Location&nbsp;</label>
-          <input type="text" name="" id="location" class="shadow appearance-none w-full border rounded py-2 px-3 leading-tight focus:outline-none focus:shadow-outline">
-        </div>
-  
         <div class="flex items-center justify-center">
             <input type="submit" value="ADD" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">&nbsp;
             <!-- Cancel to be implemeted -->
-            <input type="submit" value="CANCEL" class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">
+            <button (click)="toggleAddForm()" value="CANCEL" class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline">CANCEL</button>
         </div>
         
       </form>

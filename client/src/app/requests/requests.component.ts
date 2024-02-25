@@ -42,13 +42,12 @@ export class RequestsComponent {
     });
   }
 
-  takeRequest(foodId : String , requestId : String) {
-    const data  = { foodId , requestId }
+  takeRequest(foodId : String , requestId : String , email : String) {
+    const data  = { foodId , requestId , email}
     this.requestService.VolunteerTakeRequest(data).subscribe((res)=> {
       console.log(res);
     }, (err) => {
-      console.log(err);
-      
+      console.log(err);  
     })
   }
 }

@@ -2,11 +2,12 @@ const express = require('express')
 const Request = require('../models/request.model')
 const Post = require('../models/post.model')
 var randomstring = require("randomstring");
+const sendEmail = require('../utils/Mailer');
 const router = express.Router()
 
 router.get('/request', async (req, res) => {
     try {
-        const requests = await Request.find({})
+        const requests = await Request.find({},{ token : 0 })
         res.status(200).send(requests)
     } catch (error) {
         console.log(error);
@@ -21,7 +22,7 @@ router.post('/request', async (req, res) => {
         const { foodId , userId , foods } = req.body;
         const token = 'N/A'
         const newRequest = new Request({
-            foodId , userId , foods , token
+            foodId , userId , foods , token , isTaken : false
         })
         await newRequest.save()
         return res.status(200).send(newRequest)
@@ -35,10 +36,12 @@ router.post('/request', async (req, res) => {
 
 router.patch('/request', async (req, res) => {
     try {
-        const { requestId , foodId } = req.body;
+        const { requestId , foodId , email } = req.body;
         const token = randomstring.generate(7);
-        const updateRequest = await Request.updateOne({ _id : requestId } , { $set :  { token : token } });
+        const updateRequest = await Request.updateOne({ _id : requestId } , { $set :  { token : token , isTaken : true} });
         const updateFood = await Post.updateOne({ _id : foodId } , { $set : { isBooked : true } })
+        //mail it
+        sendEmail(email,token)
         return res.status(200).send({ updateFood , updateRequest })
     } catch (error) {
         console.log(error);

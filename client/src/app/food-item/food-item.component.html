@@ -25,15 +25,17 @@
 
 <div class="mt-10 mb-10 text-right mr-12 pr-8">
     <button 
-      *ngIf="currentUser?.role === 'D' || currentUser?.role === 'V'"
+      *ngIf="(currentUser?.role === 'D' || currentUser?.role === 'V') && !food?.isBooked"
       class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
       TAKE ORDER
     </button>
     &nbsp;
-    <button *ngIf="currentUser?.role === 'G'" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
+    <button (click)="requestFood()" *ngIf="currentUser?.role === 'G' && !food?.isBooked" class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4">
       REQUEST FOOD
     </button>
+    <form (ngSubmit)="confirmDeleivery(token)" *ngIf="food?.isBooked">
+      <input required="true" name="token" #token="ngModel" ngModel />
+      <input type="submit" value="submit">
+    </form>
   </div>
-
-
 </div>
