@@ -3,9 +3,15 @@
 
 
 ## Installation
-Install node
-Install nodemon
-Install angular/cli
+- Install node
+  - install node from the [Node JS Website](https://nodejs.org/en/download)
+  - after installation check node version
+   ``` node -v ```
+- Install angular/cli
+  - after installation of node you can install Angular CLI for starting the client side.
+  -  use the command
+       ``` npm install -g @angular/cli ```
+      using the npm.
 
 
 ## Usage
@@ -36,6 +42,12 @@ cd Google-Solutions\server
 Install dependencies
 ```
 npm i
+```
+Setting up .env
+```
+MONGO_URL=mongodb+srv://<username>:<password>@<database>
+SECRET=<secret>
+MAIL_PASS=<app-password-for-mail-service>
 ```
 Start Server
 ```
