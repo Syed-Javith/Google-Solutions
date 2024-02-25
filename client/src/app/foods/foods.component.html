@@ -1,8 +1,13 @@
-<div *ngIf="currentUser" class="flex flex-row items-center pb-2 pt-2 pr-5 justify-end bg-slate-500">
-  <p>{{ currentUser.username }}</p>&nbsp;&nbsp;
-  <a routerLink="/profile" >
-    <img src="../../assets/user.png" alt="profile-icon" height="50px" width="50px">
+<div *ngIf="currentUser" class="group flex items-center self-end pb-4 pt-4 pr-5 bg-slate-500" dir="rtl">
+  
+  <a routerLink="/profile" class="">
+  <img class="shrink-0 h-12 w-12 rounded-full" src="../../assets/user.png" alt="profile-icon" />
   </a>
+  <div class="rtl:ml-3 ltr:mr-3">
+    <p class="font-medium text-xl text-black">&nbsp;&nbsp;{{ currentUser.username }}</p>
+    <p class="text-sm font-medium text-gray-700 ">&nbsp;&nbsp;{{ currentUser.role }}</p>
+  </div>
+  
 </div>
 
 <div class="mt-10 mb-10 text-right mr-6 pr-8">
@@ -15,8 +20,8 @@
     VIEW REQUESTS
   </button>
 </div>
-<div *ngIf="isPending" class="text-center mx-auto mt-[20%] font-bold">
-  <p class="md:text-[2rem] text-[1.5rem]">loading...Please wait</p>
+<div *ngIf="isPending" class="text-center mx-auto mt-[20%] text-orange-500 font-semibold">
+  <p class="md:text-2xl text-sm">Loading...</p>
 </div>
 
 
