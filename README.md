@@ -1,18 +1,16 @@
-# Food Redistribution Platform
+# Excess Food Donation and Redistribution Platform
 
 
 
 ## Installation
 - Install node
-  - install node from the [Node JS Website](https://nodejs.org/en/download)
-  - after installation check node version
+  - Install node from the [Node JS Website](https://nodejs.org/en/download)
+  - After installation check node version
    ``` node -v ```
 - Install angular/cli
-  - after installation of node you can install Angular CLI for starting the client side.
-  -  use the command
+  - After installation of node you can install Angular CLI for starting the client side.
+  - Use the command
        ``` npm install -g @angular/cli ```
-      using the npm.
-
 
 ## Usage
 Clone this repository to your local machine 
@@ -43,7 +41,7 @@ Install dependencies
 ```
 npm i
 ```
-Setting up .env
+Setting up .env file
 ```
 MONGO_URL=mongodb+srv://<username>:<password>@<database>
 SECRET=<secret>
