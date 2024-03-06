@@ -11,15 +11,15 @@ export class FoodService {
   constructor(private http : HttpClient) { }
 
   getFoods() : Observable<Food[]> {
-    return this.http.get<Food[]>('http://localhost:8000/food');
+    return this.http.get<Food[]>('https://google-solutions-backend.onrender.com/food');
   }
   getFood(id : String) : Observable<Food> {
-    return this.http.get<Food>('http://localhost:8000/food/'+id);
+    return this.http.get<Food>('https://google-solutions-backend.onrender.com/food/'+id);
   }
   addFood(data : AddFood) : Observable<Food> {
-    return this.http.post<Food>('http://localhost:8000/food',data)
+    return this.http.post<Food>('https://google-solutions-backend.onrender.com/food',data)
   }
   getFoodByVolunteer(data : any) : Observable<any>{
-    return this.http.delete('http://localhost:8000/food/'+ data)
+    return this.http.delete('https://google-solutions-backend.onrender.com/food/'+ data)
   }
 }

@@ -11,17 +11,17 @@ export class UserService {
   constructor(private http : HttpClient) { }
   
   loginUser(data : LoginUser) : Observable<any>{
-    return this.http.post<any>('http://localhost:8000/auth/login',data)
+    return this.http.post<any>('https://google-solutions-backend.onrender.com/auth/login',data)
   }
 
   registerUser(data : RegisterUser ) : Observable<any>{
-    return this.http.post<any>('http://localhost:8000/auth/register',data)
+    return this.http.post<any>('https://google-solutions-backend.onrender.com/auth/register',data)
   }
 
   getUser(id : String ) : Observable<User>{
-    return this.http.get<User>('http://localhost:8000/auth/user/'+id)
+    return this.http.get<User>('https://google-solutions-backend.onrender.com/auth/user/'+id)
   }
   verifyUser(token : String) : Observable<any> {
-    return this.http.get<any>('http://localhost:8000/auth/verify/'+token)
+    return this.http.get<any>('https://google-solutions-backend.onrender.com/auth/verify/'+token)
   }
 }

@@ -11,15 +11,15 @@ export class RequestService {
   constructor(private http : HttpClient) { }
 
   getRequests() : Observable<Request[]> {
-    return this.http.get<Request[]>('http://localhost:8000/request')
+    return this.http.get<Request[]>('https://google-solutions-backend.onrender.com/request')
   } 
   VolunteerTakeRequest(data : any) : Observable<any>{
-    return this.http.patch<any>('http://localhost:8000/request',data)
+    return this.http.patch<any>('https://google-solutions-backend.onrender.com/request',data)
   }
   VolunteerEnterToken(data : any) : Observable<any> {
-    return this.http.put<any>('http://localhost:8000/request',data)
+    return this.http.put<any>('https://google-solutions-backend.onrender.com/request',data)
   }
   makeRequestForFood(data : any) : Observable<any> {
-    return this.http.post<any>( 'http://localhost:8000/request' , data)
+    return this.http.post<any>( 'https://google-solutions-backend.onrender.com/request' , data)
   }
 }
