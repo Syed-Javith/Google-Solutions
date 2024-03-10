@@ -13,7 +13,7 @@ app.use(cors({
     credentials : true,
     methods : ['GET','POST','PUT','DELETE','PATCH'],
     allowedHeaders : ['Content-Type','Authorisation'],
-    origin : ['http://localhost:4200']
+    origin : ['http://localhost:4200','https://google-frontend.vercel.app']
 }))
 app.use(bodyParser.urlencoded({ extended : true }))
 app.use('/',authRoutes)
