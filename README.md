@@ -56,6 +56,6 @@ nodemon server.js
 ## Contributors
 
 - [SyedJavith R](https://github.com/Syed-Javith)
-- [Suryaa KS](https://github.com/Subhikshaa23)
-- [Subhikshaa S](https://github.com/Suryaa2004)
+- [Suryaa KS](https://github.com/Suryaa2004)
+- [Subhikshaa S](https://github.com/Subhikshaa23)
 
